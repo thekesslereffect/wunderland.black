@@ -12,11 +12,12 @@ const Home: NextPage = () => {
 
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center text-white">
         <div className='absolute top-8 md:top-0 md:relative'>
-          <h1 className="text-7xl font-bold ">
+          <text className="text-7xl font-bold ">
+            {/* <text className="animate-pulse-fast">_</text>WUNDERLAND. */}
             _WUNDERLAND.
-          </h1>
+          </text>
 
-          <p className="mt-8 text-2xl font-bold">
+          <p className="mt-10 text-2xl font-bold">
             We are all mad here
           </p>
         </div>
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
 
         <div className='absolute bottom-8 md:bottom-48 flex w-full px-8 justify-center '>
           <button className='btn bg-white rounded-2xl text-black font-bold text-2xl p-3 w-full md:max-w-lg '>Connect</button>
+          {/* <button className='btn  rounded-2xl border-4 text-white font-bold text-2xl p-3 w-full md:max-w-lg '>> Rabbit Hole</button> */}
         </div>
 
         {/* <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
