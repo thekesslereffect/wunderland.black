@@ -17,9 +17,10 @@ const Home: NextPage = () => {
             <p className="text-md mt-10  md:text-lg font-semibold">We're all mad here</p>
           </div>
 
-          <div className="flex w-full flex-col absolute bottom-8 md:bottom-1/3 px-8 justify-center items-center">
+          <div className="flex w-full absolute bottom-8 md:bottom-1/3 px-8 justify-center items-center">
             {/* <button className="btn bg-white rounded-xl text-black font-semibold text-md p-3 w-full md:max-w-lg ">Connect</button> */}
-            <button className='btn rounded-xl border-2 text-white font-semibold text-md p-3 w-full md:max-w-lg '>{'>'} Rabbit Hole</button>
+            <button className='btn rounded-xl border-2 text-white font-semibold text-md p-3 w-full md:max-w-lg '>0x047 {'->'} _rabbitHole</button>
+            {/* <button className='btn rounded-xl border-2 text-white font-semibold text-md p-3 w-full md:max-w-lg '>function rabbitHole(0x047)</button> */}
           </div>
         </div>
       </main>
