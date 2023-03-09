@@ -8,26 +8,34 @@ const CanvasAnimation = () => {
     // Initialising the canvas
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
+  
+    function handleResize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+  
+    window.addEventListener('resize', handleResize);
+  
     // Setting the width and height of the canvas
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
+  
     // Setting up the rabbit and the letters
     const rabbit = 'rabbit';
     const letters = ('0x047C297fb2fFB8e4e27d47b7dCc9cFC487437432' + rabbit).split('');
-    const letterColor = 'rgba(130, 71, 229, 1)'; //'rgba(200, 0, 110, 1)' 'rgba(130, 71, 229, .5)'
-
+    const letterColor = 'rgba(130, 71, 229, 1)';
+  
     // Setting up the columns
     const fontSize = 50;
     const columns = canvas.width / fontSize;
-
+  
     // Setting up the drops
     const dropsArray = [];
     for (let i = 0; i < columns; i++) {
       dropsArray[i] = 1;
     }
     setDrops(dropsArray);
-
+  
     // Setting up the draw function
     function draw() {
       ctx.fillStyle = 'rgba(0, 0, 0, .3)';
@@ -41,7 +49,7 @@ const CanvasAnimation = () => {
           ctx.fillStyle = 'rgba(0, 0, 0, 1)'; 
           ctx.font = ''+fontSize/2+'px Overpass Mono';  
         }else{
-
+  
           ctx.fillStyle = letterColor;
           ctx.font = ''+fontSize/2+'px Overpass Mono';
         }
@@ -53,10 +61,22 @@ const CanvasAnimation = () => {
         }
       }
     }
-
+  
     // Loop the animation
     const interval = setInterval(draw, 100);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Reset the drops state whenever the component re-renders
+    const dropsArray = [];
+    for (let i = 0; i < canvasRef.current.width / 50; i++) {
+      dropsArray[i] = 1;
+    }
+    setDrops(dropsArray);
   }, []);
 
   return <canvas ref={canvasRef} />;
@@ -64,10 +84,9 @@ const CanvasAnimation = () => {
 
 const AddressRain = () => {
   return (
-    <div className=''>
+    <div className='absolute'>
       <CanvasAnimation />
     </div>
-    
   );
 };
 
