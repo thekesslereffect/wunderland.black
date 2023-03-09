@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        overpass: ["Overpass Mono", "sans-serif"],
+      },
       keyframes: {
         pulse: {
             '0%': {

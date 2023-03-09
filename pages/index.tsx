@@ -4,11 +4,13 @@ import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2  bg-black">
+    <div className="flex min-h-screen flex-col items-center justify-center py-2  bg-black font-overpass">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {/* bg-[#8247E5] */}
 
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center text-white">
         <div className='absolute top-8 md:top-0 md:relative'>
