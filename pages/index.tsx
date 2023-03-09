@@ -13,8 +13,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className="bg-black text-white font-overpass">
-      <AddressRain/>
+      <main className=" bg-[#8247E5] text-white font-overpass">
+        <AddressRain/>
         <div className="flex flex-col mx-auto max-w-7xl min-h-screen py-6 sm:px-6 lg:px-8 items-center ">
           <div className="flex flex-col w-full absolute top-20 md:top-1/3 px-8 text-center ">
             <h1 className="text-4xl  md:text-7xl font-bold ">_WUNDERLAND.</h1>
