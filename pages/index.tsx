@@ -10,16 +10,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex w-screen  flex-1 flex-col items-center justify-center px-20 text-center text-white">
-        <div className="absolute top-8 md:top-0 md:relative">
+        <div className="absolute top-20 md:top-0 md:relative">
           <h1 className="text-4xl  md:text-7xl font-bold ">_WUNDERLAND.</h1>
 
-          <p className="text-lg mt-10  md:text-2xl font-bold">
+          <p className="text-md mt-10  md:text-lg font-bold">
             We are all mad here
           </p>
         </div>
 
         <div className="absolute bottom-8 md:bottom-48 flex w-full px-8 justify-center ">
-          <button className="btn bg-white rounded-2xl text-black font-bold text-2xl p-3 w-full md:max-w-lg ">
+          <button className="btn bg-white rounded-2xl text-black font-bold text-md p-3 w-full md:max-w-lg ">
             Connect
           </button>
           {/* <button className='btn  rounded-2xl border-4 text-white font-bold text-2xl p-3 w-full md:max-w-lg '>> Rabbit Hole</button> */}
