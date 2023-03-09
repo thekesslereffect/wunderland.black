@@ -14,8 +14,11 @@ const CanvasAnimation = () => {
   canvas.height = window.innerHeight;
 
   // Setting up the letters
-  let letters = '0x047';
+
+  let rabbit = 'rabbit';
+  let letters = '0x047C297fb2fFB8e4e27d47b7dCc9cFC487437432' + rabbit;
   letters = letters.split('');
+  let letterColor = 'rgba(130, 71, 229, 1)'; //'rgba(200, 0, 110, 1)' 'rgba(130, 71, 229, .5)'
 
   // Setting up the columns
   const fontSize = 50;
@@ -34,9 +37,19 @@ const CanvasAnimation = () => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < drops.length; i++) {
       const text = letters[Math.floor(Math.random() * letters.length)];
-      // ctx.fillStyle = 'rgba(255, 30, 130, 1)';
-      ctx.fillStyle = 'rgba(130, 71, 229, .3)'; 
+      ctx.textAlign = "center";
+      if(rabbit.includes(text)){
+        ctx.fillStyle = letterColor; 
+        ctx.fillRect((i * fontSize)-fontSize/2 +fontSize/4, (drops[i] * fontSize)-fontSize/2+fontSize/10, fontSize/2, fontSize/2);
+        ctx.fillStyle = 'rgba(0, 0, 0, 1)'; 
+        ctx.font = ''+fontSize/2+'px Overpass Mono';  
+      }else{
+
+        ctx.fillStyle = letterColor;
+        ctx.font = ''+fontSize/2+'px Overpass Mono';
+      }
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      
       drops[i]++;
       if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
         drops[i] = 0;
@@ -45,19 +58,15 @@ const CanvasAnimation = () => {
   }
 
   // Loop the animation
-  const interval = setInterval(draw, 200);
+  const interval = setInterval(draw, 100);
   return () => clearInterval(interval);
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return <div className="absolute max-h-screen"><canvas ref={canvasRef} /></div>;
 }
 const AddressRain = () => {
   return(
-    <div className='bg-black min-w-screen min-h-screen '>
-      <CanvasAnimation/>
-    </div>
-      
-    
+      <CanvasAnimation/>   
   );
 }
   
