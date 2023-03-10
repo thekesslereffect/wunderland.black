@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         {/* <DigitalRain /> */}
         <div className="flex flex-col mx-auto max-w-7xl min-h-screen py-6 sm:px-6 lg:px-8 items-center ">
           <div className="flex flex-col w-full absolute top-20 md:top-1/3 px-8 text-center ">
-            <h1 className="text-4xl  md:text-7xl font-bold ">_WUNDERLAND.</h1>
+            <h1 className="text-4xl  md:text-7xl font-bold ">_WVNDR.LAND</h1>
             <p className="text-md mt-10  md:text-lg font-semibold">Not all who wander are lost</p>
           </div>
           <div className="flex w-full absolute bottom-8 md:bottom-1/3 px-8 justify-center items-center">
