@@ -20,7 +20,7 @@ const Home: NextPage = () => {
       </Head>
       
       <main className=" bg-black text-white font-overpass">
-        {/* <MatrixRain /> */}
+        <MatrixRain />
         <div className="flex flex-col mx-auto max-w-7xl w-auto min-h-screen py-6 sm:px-6 lg:px-8 items-center ">
           <div className="flex flex-col w-full absolute top-20 md:top-1/3 px-8 text-center ">
             <h1 className="text-4xl  md:text-7xl font-bold ">_WVNDR.LAND</h1>
