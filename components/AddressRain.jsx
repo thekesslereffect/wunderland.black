@@ -12,7 +12,7 @@ const CanvasAnimation = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // Setting up the rabbit and the letters
+    // Setting up the rabbit and the letters 
     const rabbit = 'rabbit';
     const letters = ('0x047C297fb2fFB8e4e27d47b7dCc9cFC487437432' + rabbit).split('');
     const letterColor = 'rgba(130, 71, 229, 1)'; //'rgba(200, 0, 110, 1)' 'rgba(130, 71, 229, .5)'

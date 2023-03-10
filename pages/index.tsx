@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { AddressRain, DigitalRain } from '../components';
+import { AddressRain, DigitalRain, MatrixRain } from '../components';
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +14,9 @@ const Home: NextPage = () => {
       </Head>
       
       <main className=" bg-black text-white font-overpass">
-        <AddressRain />
+        {/* <AddressRain /> */}
+        <MatrixRain />
+        {/* <DigitalRain /> */}
         <div className="flex flex-col mx-auto max-w-7xl min-h-screen py-6 sm:px-6 lg:px-8 items-center ">
           <div className="flex flex-col w-full absolute top-20 md:top-1/3 px-8 text-center ">
             <h1 className="text-4xl  md:text-7xl font-bold ">_WUNDERLAND.</h1>
