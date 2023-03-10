@@ -3,10 +3,12 @@ import Head from "next/head";
 import Image from "next/image";
 import { AddressRain, MatrixRain, TextScramble } from '../components';
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 const Home: NextPage = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isHoveringWVNDR, setIsHoveringWVNDR] = useState(false);
+  const router = useRouter();
 
   return (
     // <div className="flex flex-col min-h-screen min-w-screen items-center justify-center py-2 bg-black ">
@@ -29,9 +31,15 @@ const Home: NextPage = () => {
           </div>
           <div className="flex w-full absolute bottom-8 md:bottom-1/3 px-8 justify-center items-center">
             {/* <button className="btn bg-white rounded-xl text-black font-semibold text-md p-3 w-full md:max-w-lg ">Connect</button> */}
-            {/* <button className='btn rounded-xl border-2 text-white font-semibold text-md p-3 w-full md:max-w-lg '>0x047 {'->'} _rabbitHole</button> */}
-            <button className="btn rounded-xl hover:border-[#FF0082] border-2 h-14 text-white font-semibold text-md p-3 w-full md:max-w-lg " onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-                <TextScramble text={isHovering ? "> _rabbitHole" : "0x047C...7432"} scrambleColor={"rgba(255, 0, 130, 1)"} unscrambleColor={"white"} />
+
+            <button className="btn rounded-xl hover:border-[#FF0082] border-2 h-14 text-white font-semibold text-md p-3 w-full md:max-w-lg " 
+              onMouseEnter={() => setIsHovering(true)} 
+              onMouseLeave={() => setIsHovering(false)}
+              onClick={() => router.push('/frontpage')}
+              >
+                
+                  <TextScramble text={isHovering ? "> _rabbitHole" : "0x047C...7432"} scrambleColor={"rgba(255, 0, 130, 1)"} unscrambleColor={"white"} />
+                
             </button>
           </div>
         </div>
