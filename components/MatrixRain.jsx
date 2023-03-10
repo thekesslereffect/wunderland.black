@@ -9,11 +9,11 @@ const STREAM_MUTATION_ODDS = 0.05;
 const MIN_STREAM_SIZE = 3;
 const MAX_STREAM_SIZE = 20;
 
-const MIN_INTERVAL_DELAY = 100;
-const MAX_INTERVAL_DELAY = 200;
+const MIN_INTERVAL_DELAY = 200;
+const MAX_INTERVAL_DELAY = 300;
 
 const MIN_DELAY_BETWEEN_STREAMS = 0;
-const MAX_DELAY_BETWEEN_STREAMS = 5;
+const MAX_DELAY_BETWEEN_STREAMS = 500;
 
 const getRandInRange = (min, max) =>
 	Math.floor(Math.random() * (max - min)) + min;
