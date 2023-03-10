@@ -7,7 +7,7 @@ const VALID_CHARS = `0x047C297fb2fFB8e4e27d47b7dCc9cFC487437432`;
 const STREAM_MUTATION_ODDS = 0.05;
 
 const MIN_STREAM_SIZE = 3;
-const MAX_STREAM_SIZE = 10;
+const MAX_STREAM_SIZE = 20;
 
 const MIN_INTERVAL_DELAY = 100;
 const MAX_INTERVAL_DELAY = 200;
@@ -89,7 +89,7 @@ const RainStream = props => {
 				marginTop: topPadding,
 				marginLeft: 0,
 				marginRight: 0,
-				textShadow: '0px 0px 0px rgba(200, 0, 110, .1)', //rgba(200, 0, 110, .1) rgba(130, 71, 229, 1)
+				textShadow: '0px 0px 0px rgba(200, 0, 110, 0)', //rgba(200, 0, 110, .1) rgba(130, 71, 229, 1)
 				fontSize: 24,
 				fontWeight: '100',
 			}}>
@@ -98,11 +98,11 @@ const RainStream = props => {
 					style={{
 						marginTop: 0,
 						// Reduce opacity for last chars
-						opacity: index < 6 ? 0.1 + index * 0.05 : 1,  // opacity: index < 6 ? 0.1 + index * 0.15 : 1, 
+						opacity: index < 6 ? 1 + index * 1 : 1,  // opacity: index < 6 ? 0.1 + index * 0.15 : 1, 
 						color: index === stream.length - 1 ? 'rgba(255, 0, 130, 1)' : undefined,
 						textShadow:
 							index === stream.length - 1
-								? '0px 0px 0px rgba(255, 0, 130, .1)'
+								? '0px 0px 0px rgba(255, 0, 130, 0)'
 								: undefined,
 					}}>
 					{char}
