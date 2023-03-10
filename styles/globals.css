@@ -6,3 +6,7 @@
 /* :root{
   font-family: 'Overpass Mono', monospace;
 } */
+
+::selection {
+  background: #FF0082;
+}
