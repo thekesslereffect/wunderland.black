@@ -4,9 +4,10 @@ import type p5Type from 'p5'
 let letterGrid: string[][];
 let keys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let keySize = keys.length;
-let gridSize = 40;
+let gridSizeMult = 80;
+let gridSize = 0;
 let mutation = 0.2;
-let noiseScale = .2;
+let noiseScale = .1;
 let noiseSpeed = 0.015;
 let speed = 20;
 let fontSize = 16;
@@ -27,7 +28,7 @@ export const setup = (p5: p5Type, canvasParentRef: Element): void => {
   p5.background(bgColor);
   p5.loadFont('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;500;600;700&display=swap')
   p5.textFont("Overpass Mono");
-
+  gridSize = p5.floor(p5.windowWidth/gridSizeMult);
   // fill the letterGrid array with keys
   letterGrid = new Array(gridSize).fill(null).map(() => new Array(gridSize).fill(''));
   for (let i = 0; i < gridSize; i++) {
