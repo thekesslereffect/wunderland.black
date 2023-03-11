@@ -3,9 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root{
-  font-family: 'Overpass Mono', monospace;
-} */
+:root{
+  /* font-family: 'Overpass Mono', monospace; */
+  background: rgb(10,10,10);
+}
 
 ::selection {
   background: #FF0082;

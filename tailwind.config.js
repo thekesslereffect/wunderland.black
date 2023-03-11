@@ -18,7 +18,7 @@ module.exports = {
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
       'hot' : '#FF0082',
-      'black' : '#050505',
+      'black' : '#101010',
     },
     extend: {
       fontFamily: {
