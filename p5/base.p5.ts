@@ -1,8 +1,7 @@
 import type p5Type from 'p5'
 
-
 let letterGrid: string[][];
-let keys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let keys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./;'[]-=!@#$%^&*()_+~";
 let keySize = keys.length;
 let gridSizeMult = 80;
 let gridSize = 0;
@@ -19,7 +18,7 @@ let fontColorG = 255;
 let fontColorB = 255;
 let rabbit = "rabbitRABBIT";
 let distortionStrength = 100; // adjust the amplitude of the distortion
-let distortionScale = 0.5; // adjust the scale of the distortion
+let distortionScale = .1; // adjust the scale of the distortion
 let distortionFalloff = 0.01; // adjust the falloff of the distortion away from the mouse
 let radius = 200;
 
@@ -54,50 +53,85 @@ export const draw = (p5: p5Type): void => {
     }
   }
 
+  // update the keys in the grid based on Perlin noise and distortion
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = 0; j < gridSize; j++) {
+      let noiseValue = seamlessNoise(p5, i * noiseScale, j * noiseScale, p5.frameCount * noiseSpeed);
+      let opacityValue = 1 / (1 + p5.exp(-opacityScale * (noiseValue + opacityOffset)));
 
-// update the keys in the grid based on Perlin noise and distortion
-for (let i = 0; i < gridSize; i++) {
-  for (let j = 0; j < gridSize; j++) {
-    let noiseValue = seamlessNoise(p5, i * noiseScale, j * noiseScale, p5.frameCount * noiseSpeed);
-    let opacityValue = 1 / (1 + p5.exp(-opacityScale * (noiseValue + opacityOffset)));
-    if (opacityValue > 0.1) {
-      if (letterGrid[i][j] == "") {
-        letterGrid[i][j] = keys.charAt(p5.floor(p5.random(keySize)));
-      }
-      if (rabbit.includes(letterGrid[i][j])) {
-        p5.fill(255, 0, 130, opacityValue * 255);
+      if (opacityValue > 0.1) {
+        // Add chromatic aberration effect
+        let r = p5.random(0.9, 1.1);
+        let g = p5.random(0.9, 1.1);
+        let b = p5.random(0.9, 1.1);
+
+        let letterR = fontColorR * r;
+        let letterG = fontColorG * g;
+        let letterB = fontColorB * b;
+
+        if (letterGrid[i][j] == "") {
+          letterGrid[i][j] = keys.charAt(p5.floor(p5.random(keySize)));
+        }
+
+        if (rabbit.includes(letterGrid[i][j])) {
+          p5.fill(255, 0, 130, opacityValue * 255);
+        } else {
+          p5.fill(letterR, letterG, letterB, opacityValue * 255);
+        }
       } else {
-        p5.fill(fontColorR, fontColorG, fontColorB, opacityValue * 255);
+        if (letterGrid[i][j] != "") {
+          letterGrid[i][j] = "";
+        }
       }
-    } else {
-      if (letterGrid[i][j] != "") {
-        letterGrid[i][j] = "";
-      }
-    }
 
-    // calculate the distortion using seamless Perlin noise
-    const mouseDist = p5.dist(p5.mouseX, p5.mouseY, i * p5.width / gridSize, j * p5.height / gridSize);
-    if (mouseDist < radius) {
-      const falloff = p5.map(mouseDist, 0, radius, 1, distortionFalloff);
-      let distortionX = p5.map(seamlessNoise(p5, i * distortionScale, j * distortionScale + p5.frameCount * noiseSpeed, 1), 0, 1, -distortionStrength, distortionStrength) * falloff;
-      let distortionY = p5.map(seamlessNoise(p5, i * distortionScale + p5.frameCount * noiseSpeed, j * distortionScale, 1), 0, 1, -distortionStrength, distortionStrength) * falloff;
-      let x = i * p5.width / gridSize + p5.width / (2 * gridSize) + distortionX;
-      let y = j * p5.height / gridSize + p5.height / (2 * gridSize) + distortionY;
+      // calculate the distortion using seamless Perlin noise
+const mouseDist = p5.dist(p5.mouseX, p5.mouseY, i * p5.width / gridSize, j * p5.height / gridSize);
+if (mouseDist < radius) {
+const falloff = p5.map(mouseDist, 0, radius, 1, distortionFalloff);
+let distortionX = p5.map(seamlessNoise(p5, i * distortionScale, j * distortionScale + p5.frameCount * noiseSpeed, 1), 0, 1, -distortionStrength, distortionStrength) * falloff;
+let distortionY = p5.map(seamlessNoise(p5, i * distortionScale + p5.frameCount * noiseSpeed, j * distortionScale, 1), 0, 1, -distortionStrength, distortionStrength) * falloff;
+let x = i * p5.width / gridSize + p5.width / (2 * gridSize) + distortionX;
+let y = j * p5.height / gridSize + p5.height / (2 * gridSize) + distortionY;
 
-      // draw the letter on the canvas
-      p5.textSize(fontSize);
-      p5.textAlign(p5.CENTER, p5.CENTER);
-      p5.text(letterGrid[i][j], x, y);
-    } else {
-      let x = i * p5.width / gridSize + p5.width / (2 * gridSize);
-      let y = j * p5.height / gridSize + p5.height / (2 * gridSize);
+// draw the letter on the canvas with chromatic aberration
+let r = p5.map(i, 0, gridSize, 255, 0);
+let g = p5.map(j, 0, gridSize, 255, 0);
+let b = p5.map(i + j, 0, gridSize * 2, 0, 255);
+p5.textSize(fontSize);
+p5.textAlign(p5.CENTER, p5.CENTER);
+if (rabbit.includes(letterGrid[i][j])) {
+  p5.fill(255, 0, 130, opacityValue * 255);
+} else {
+p5.fill(r, g, b, opacityValue * 255);
+}
+p5.text(letterGrid[i][j], x - 2, y - 2); // draw the text three times, with offsets to create the chromatic aberration effect
+if (rabbit.includes(letterGrid[i][j])) {
+  p5.fill(255, 0, 130, opacityValue * 255);
+} else {
+p5.fill(b, r, g, opacityValue * 255);
+}
+p5.text(letterGrid[i][j], x, y);
+if (rabbit.includes(letterGrid[i][j])) {
+  p5.fill(255, 0, 130, opacityValue * 255);
+} else {
+p5.fill(g, b, r, opacityValue * 255);
+}
+p5.text(letterGrid[i][j], x + 2, y + 2);
+} else {
+let x = i * p5.width / gridSize + p5.width / (2 * gridSize);
+let y = j * p5.height / gridSize + p5.height / (2 * gridSize);
 
-      // draw the letter on the canvas without distortion
-      p5.textSize(fontSize);
-      p5.textAlign(p5.CENTER, p5.CENTER);
-      p5.text(letterGrid[i][j], x, y);
-    }
-  }
+// draw the letter on the canvas without distortion or chromatic aberration
+p5.textSize(fontSize);
+p5.textAlign(p5.CENTER, p5.CENTER);
+if (rabbit.includes(letterGrid[i][j])) {
+  p5.fill(255, 0, 130, opacityValue * 255);
+} else {
+p5.fill(fontColorR, fontColorG, fontColorB, opacityValue * 255);
+}
+p5.text(letterGrid[i][j], x, y);
+}
+}
 }
 }
 
