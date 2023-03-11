@@ -10,17 +10,17 @@ let noiseScale = .2;
 let noiseSpeed = 0.015;
 let speed = 20;
 let fontSize = 16;
-let opacityScale = 30;
+let opacityScale = 50;
 let opacityOffset = -0.6;
 let bgColor = 0;
 let fontColorR = 255;
 let fontColorG = 255;
 let fontColorB = 255;
 let rabbit = "rabbitRABBIT";
-let distortionStrength = 800; // adjust the amplitude of the distortion
-let distortionScale = 0.05; // adjust the scale of the distortion
-let distortionFalloff = 0.00001; // adjust the falloff of the distortion away from the mouse
-let radius = 500;
+let distortionStrength = 100; // adjust the amplitude of the distortion
+let distortionScale = 0.5; // adjust the scale of the distortion
+let distortionFalloff = 0.01; // adjust the falloff of the distortion away from the mouse
+let radius = 200;
 
 export const setup = (p5: p5Type, canvasParentRef: Element): void => {
   p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
