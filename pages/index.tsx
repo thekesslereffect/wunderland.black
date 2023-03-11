@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
   return (
     // <div className="flex flex-col min-h-screen min-w-screen items-center justify-center py-2 bg-black ">
-    <div>
+    <div className="bg-black">
       
       <Head>
         <title>Create Next App</title>
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       
       <main className=" bg-black text-white font-overpass max-h-screen overflow-hidden">
         {/* <MatrixRain /> */}
-        <Sketch setup={setup} draw={draw} className="mx-auto max-h-screen overflow-hidden font-overpass"/>
+        <Sketch setup={setup} draw={draw} className="mx-auto max-h-screen overflow-hidden font-overpass bg-black"/>
         
         <div className="flex flex-col mx-auto max-w-7xl w-auto min-h-screen py-6 sm:px-6 lg:px-8 items-center ">
           <div className="flex flex-col w-auto absolute top-20 md:top-1/3 px-8 text-center ">
