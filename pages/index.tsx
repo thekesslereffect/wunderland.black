@@ -42,7 +42,7 @@ const Home: NextPage = () => {
           <div className="flex w-full absolute bottom-8 md:bottom-1/3 px-8 justify-center items-center">
             {/* <button className="btn bg-white rounded-xl text-black font-semibold text-md p-3 w-full md:max-w-lg ">Connect</button> */}
 
-            <button className="btn rounded-xl hover:border-hot hover:border-2 hover:bg-black hover:text-white h-14 bg-white text-black font-semibold text-md p-3 w-full md:max-w-lg overflow-hidden" 
+            <button className="btn rounded-2xl  h-14 bg-white text-black font-semibold text-md p-3 w-full md:max-w-lg overflow-hidden" 
               onMouseEnter={() => setIsHovering(true)} 
               onMouseLeave={() => setIsHovering(false)}
               onClick={() => router.push('/frontpage')} 
