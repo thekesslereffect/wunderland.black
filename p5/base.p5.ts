@@ -1,10 +1,10 @@
 import type p5Type from 'p5'
 
-let letterGrid = [];
+let letterGrid: string[][];
 let keys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let keySize = keys.length;
 let gridSize = 40;
-let mutation = 0.5;
+let mutation = 0.1;
 let noiseScale = 0.5;
 let noiseSpeed = 0.02;
 let speed = 10;
@@ -26,12 +26,13 @@ export const setup = (p5: p5Type, canvasParentRef: Element): void => {
   p5.textFont("Overpass Mono");
 
   // fill the letterGrid array with keys
-  for (let i = 0; i < gridSize; i++) {
-    letterGrid[i] = [];
+  // fill the letterGrid array with keys
+letterGrid = new Array(gridSize).fill(null).map(() => new Array(gridSize).fill(''));
+for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
       letterGrid[i][j] = keys.charAt(p5.floor(p5.random(keySize)));
     }
-  }
+}
 
   // set the frame rate based on the speed variable
   p5.frameRate(speed);
@@ -40,6 +41,8 @@ export const setup = (p5: p5Type, canvasParentRef: Element): void => {
 export const draw = (p5: p5Type): void => {
   // clear the canvas
   p5.background(bgColor);
+  
+
 
   // update the keys in the grid based on the mutation variable
   for (let i = 0; i < gridSize; i++) {
@@ -89,13 +92,13 @@ export const draw = (p5: p5Type): void => {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
       }
       
-      function seamlessNoise(p5, x, y, z) {
+      function seamlessNoise(p5: p5Type, x: number, y: number, z: number) {
         let xWrapped = wrapAround(x, 0, p5.width);
         let yWrapped = wrapAround(y, 0, p5.height);
         return p5.noise(xWrapped, yWrapped, z);
       }
       
-      function wrapAround(value, min, max) {
+      function wrapAround(value: number, min: number, max: number) {
         let range = max - min;
         return ((value - min) % range + range) % range + min;
       }

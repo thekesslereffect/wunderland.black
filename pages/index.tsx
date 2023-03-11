@@ -5,9 +5,9 @@ import { AddressRain, MatrixRain, TextScramble } from '../components';
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
-import dynamic from 'next/dynamic'
-import { draw, setup } from 'p5/base.p5'
-const Sketch = dynamic(import('react-p5'), { ssr: false })
+import dynamic from 'next/dynamic';
+import { setup, draw} from '../p5/base.p5';
+const Sketch = dynamic(import('react-p5'), { ssr: false });
 
 
 const Home: NextPage = () => {
