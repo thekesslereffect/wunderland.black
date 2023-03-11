@@ -4,24 +4,24 @@ import type p5Type from 'p5'
 let letterGrid: string[][];
 let keys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./;'[]-=!@#$%^&*()_+~";
 let keySize = keys.length;
-let gridSizeMult = 80;
+let gridSizeMult = 60;
 let gridSize = 0;
 let mutation = 0.2;
-let noiseScale = .1;
-let noiseSpeed = 0.015;
+let noiseScale = .5;
+let noiseSpeed = 0.01;
 let speed = 20;
 let fontSize = 16;
-let opacityScale = 50;
+let opacityScale = 40;
 let opacityOffset = -0.6;
-let bgColor = "rgba(199, 209, 207,1)";
-let fontColorR = 39;
-let fontColorG = 39;
-let fontColorB = 42;
+let bgColor = "rgba(5, 5, 5,1)";
+let fontColorR = 200;
+let fontColorG = 200;
+let fontColorB = 200;
 let rabbit = "rabbitRABBIT";
 let distortionStrength = 0; // adjust the amplitude of the distortion
-let distortionScale = 0.5; // adjust the scale of the distortion
-let distortionFalloff = 0.01; // adjust the falloff of the distortion away from the mouse
-let radius = 200;
+let distortionScale = .1; // adjust the scale of the distortion
+let distortionFalloff = 0.001; // adjust the falloff of the distortion away from the mouse
+let radius = 500;
 
 export const setup = (p5: p5Type, canvasParentRef: Element): void => {
   p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
